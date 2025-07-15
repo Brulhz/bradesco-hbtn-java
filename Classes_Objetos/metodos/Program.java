@@ -7,7 +7,7 @@ public class Program {
 
         System.out.printf("%d\n", personagem1.getSaudeAtual());
 
-        personagem1.receberCura(91);
+        personagem1.receberCura(90);
 
         System.out.printf("%d\n", personagem1.getSaudeAtual());
 
@@ -15,7 +15,7 @@ public class Program {
 
         System.out.printf("%d\n", personagem1.getSaudeAtual());
 
-        personagem1.tomarDano(80);
+        personagem1.tomarDano(75);
 
         System.out.printf("%d\n", personagem1.getSaudeAtual());
     }
