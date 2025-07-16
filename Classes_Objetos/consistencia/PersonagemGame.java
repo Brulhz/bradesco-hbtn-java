@@ -3,6 +3,11 @@ public class PersonagemGame {
     private String nome;
     private String status;
 
+    public PersonagemGame(int saudeAtual, String nome) {
+        setSaudeAtual(saudeAtual);
+        setNome(nome);
+    }
+
     public int getSaudeAtual() {
         return saudeAtual;
     }
@@ -28,7 +33,9 @@ public class PersonagemGame {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome != null && !nome.isEmpty()) {
+            this.nome = nome;
+        }
     }
 
     public String getStatus() {
