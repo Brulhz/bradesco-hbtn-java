@@ -23,9 +23,4 @@ public class Retangulo extends FormaGeometrica {
         }
         this.altura = altura;
     }
-
-    @Override
-    public double area() {
-        return largura * altura;
-    }
 }
