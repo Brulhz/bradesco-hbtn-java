@@ -5,15 +5,15 @@ public class Livro extends Produto {
     private String autor;
     private int edicao;
 
-    public Livro(String titulo, int ano, String pais, double precoBruto, int paginas, String autor, int edicao) {
-        super(titulo, ano, pais, precoBruto);
+    public Livro(String titulo, int ano, String pais, double preco, int paginas, String autor, int edicao) {
+        super(titulo, ano, pais, preco);
         this.paginas = paginas;
         this.autor = autor;
         this.edicao = edicao;
     }
 
     @Override
-    public double obterPrecoLiquido() {
-        return getPrecoBruto() * 1.15;
+    public String getTipo() {
+        return "Livro";
     }
 }
