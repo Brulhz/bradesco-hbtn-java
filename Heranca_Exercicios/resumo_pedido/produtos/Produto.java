@@ -1,10 +1,10 @@
 package produtos;
 
 public abstract class Produto {
-    private String titulo;
-    private int ano;
-    private String pais;
-    private double preco;
+    protected String titulo;
+    protected int ano;
+    protected String pais;
+    protected double preco;
 
     public Produto(String titulo, int ano, String pais, double preco) {
         this.titulo = titulo;
@@ -17,9 +17,5 @@ public abstract class Produto {
         return titulo;
     }
 
-    public double getPreco() {
-        return preco * 1.13; // com taxa de 13%
-    }
-
-    public abstract String getTipo();
+    public abstract double obterPrecoLiquido();
 }

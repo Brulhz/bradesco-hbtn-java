@@ -13,7 +13,7 @@ public class Livro extends Produto {
     }
 
     @Override
-    public String getTipo() {
-        return "Livro";
+    public double obterPrecoLiquido() {
+        return preco * 1.15; // 15% acréscimo
     }
 }

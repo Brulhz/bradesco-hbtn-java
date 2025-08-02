@@ -13,7 +13,7 @@ public class Dvd extends Produto {
     }
 
     @Override
-    public String getTipo() {
-        return "Dvd";
+    public double obterPrecoLiquido() {
+        return preco * 1.20; // 20% acréscimo
     }
 }
