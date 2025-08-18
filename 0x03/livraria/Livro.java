@@ -12,7 +12,6 @@ public class Livro {
         setPreco(preco);
     }
 
-    // Getters
     public String getTitulo() {
         return titulo;
     }
@@ -25,7 +24,6 @@ public class Livro {
         return preco;
     }
 
-    // Setters com validações
     public void setTitulo(String titulo) throws LivroInvalidoException {
         if (titulo == null || titulo.length() < 3) {
             throw new LivroInvalidoException("Titulo de livro invalido");
