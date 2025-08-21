@@ -15,9 +15,8 @@ public class Estoque {
 
     private void carregarEstoque() {
         produtos.clear();
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(new FileInputStream(arquivoCsv), StandardCharsets.UTF_8))) {
-            String linha;
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivoCsv))) {
+        }            String linha;
             while ((linha = br.readLine()) != null) {
                 if (linha.trim().isEmpty()) continue;
                 String[] dados = linha.split(",");
