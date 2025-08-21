@@ -4,28 +4,16 @@ import java.io.IOException;
 
 public class CsvFileReader {
     public static void main(String[] args) {
-        String fileName = "funcionarios.csv"; // Nome fixo do arquivo CSV
+        String fileName = "funcionarios.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String linha;
-            boolean primeiraLinha = true;
 
             while ((linha = br.readLine()) != null) {
-                // Ignora linha em branco (final do arquivo)
-                if (linha.trim().isEmpty()) {
-                    continue;
-                }
+                if (linha.trim().isEmpty()) continue;
 
-                // Ignora o cabeçalho
-                if (primeiraLinha) {
-                    primeiraLinha = false;
-                    continue;
-                }
-
-                // Divide os campos pelo separador ","
                 String[] dados = linha.split(",");
 
-                // Impressão no formato pedido
                 System.out.println("Funcionário: " + dados[0]);
                 System.out.println("Idade: " + dados[1]);
                 System.out.println("Departamento: " + dados[2]);
