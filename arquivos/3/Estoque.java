@@ -43,6 +43,7 @@ public class Estoque {
         } catch (IOException e) {
             System.out.println("Erro ao salvar o arquivo: " + e.getMessage());
         }
+
     }
 
     public void adicionarProduto(String nome, int quantidade, double preco) {
