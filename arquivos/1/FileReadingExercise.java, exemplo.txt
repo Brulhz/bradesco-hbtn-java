@@ -1,35 +1,21 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class FileWritingExercise {
+public class FileReadingExercise {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        String fileName = "exemplo.txt"; // Nome do arquivo fixo para leitura
 
-        // Solicita o nome do arquivo
-        System.out.print("Digite o nome do arquivo (com extensão .txt): ");
-        String fileName = scanner.nextLine();
+        System.out.println("Conteúdo do arquivo '" + fileName + "':\n");
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            System.out.println("Digite linhas de texto (digite 'sair' para finalizar):");
-
-            while (true) {
-                String linha = scanner.nextLine();
-
-                if (linha.equalsIgnoreCase("sair")) {
-                    break;
-                }
-
-                writer.write(linha);
-                writer.newLine(); // quebra de linha
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                System.out.println(linha);
             }
-
-            System.out.println("Arquivo '" + fileName + "' criado e salvo com sucesso!");
+            System.out.println("\nLeitura do arquivo concluída.");
         } catch (IOException e) {
-            System.out.println("Ocorreu um erro ao escrever no arquivo: " + e.getMessage());
+            System.out.println("Ocorreu um erro ao ler o arquivo: " + e.getMessage());
         }
-
-        scanner.close();
     }
 }
