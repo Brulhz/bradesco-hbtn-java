@@ -25,7 +25,7 @@ public class GerenciadorEstoque {
                     int quantidade = scanner.nextInt();
                     System.out.print("Digite o preço: ");
                     double preco = scanner.nextDouble();
-                    scanner.nextLine(); /
+                    scanner.nextLine();
                     estoque.adicionarProduto(nome, quantidade, preco);
                     break;
                 case 2:
