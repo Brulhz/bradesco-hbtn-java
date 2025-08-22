@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Estoque {
 
     private void carregarEstoque() {
         produtos.clear();
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivoCsv))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(new FileInputStream(arquivoCsv), StandardCharsets.UTF_8))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 if (linha.trim().isEmpty()) continue;
@@ -26,14 +28,15 @@ public class Estoque {
                 produtos.add(new Produto(id, nome, quantidade, preco));
             }
         } catch (FileNotFoundException e) {
-            salvarEstoque(); // cria arquivo se não existir
+            salvarEstoque(); // cria o arquivo se não existir
         } catch (IOException e) {
             System.out.println("Erro ao ler o arquivo: " + e.getMessage());
         }
     }
 
     private void salvarEstoque() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivoCsv))) {
+        try (BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(arquivoCsv), StandardCharsets.UTF_8))) {
             for (Produto p : produtos) {
                 bw.write(p.toCsv());
                 bw.newLine();
@@ -48,7 +51,6 @@ public class Estoque {
         Produto p = new Produto(id, nome, quantidade, preco);
         produtos.add(p);
         salvarEstoque();
-        System.out.println("Produto adicionado: " + p);
     }
 
     public void excluirProduto(int id) {
@@ -56,9 +58,6 @@ public class Estoque {
         if (p != null) {
             produtos.remove(p);
             salvarEstoque();
-            System.out.println("Produto removido: " + p);
-        } else {
-            System.out.println("Produto com ID " + id + " não encontrado.");
         }
     }
 
@@ -67,17 +66,10 @@ public class Estoque {
         if (p != null) {
             p.setQuantidade(novaQuantidade);
             salvarEstoque();
-            System.out.println("Quantidade atualizada: " + p);
-        } else {
-            System.out.println("Produto com ID " + id + " não encontrado.");
         }
     }
 
     public void exibirEstoque() {
-        if (produtos.isEmpty()) {
-            System.out.println("Estoque vazio.");
-            return;
-        }
         for (Produto p : produtos) {
             System.out.println(p);
         }
