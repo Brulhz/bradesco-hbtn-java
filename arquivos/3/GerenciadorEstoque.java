@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class GerenciadorEstoque {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in, "UTF-8");
+        Scanner scanner = new Scanner(System.in);
         Estoque estoque = new Estoque("estoque.csv");
 
         while (true) {
-            System.out.println("\nMenu:");
+            System.out.println("Menu:");
             System.out.println("1. Adicionar Produto");
             System.out.println("2. Excluir Produto");
             System.out.println("3. Exibir Estoque");
@@ -14,37 +14,39 @@ public class GerenciadorEstoque {
             System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
 
-            int opcao = scanner.hasNextInt() ? scanner.nextInt() : 0;
-            scanner.nextLine();
+            int opcao;
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida!");
+                continue;
+            }
 
             switch (opcao) {
                 case 1:
                     System.out.print("Digite o nome do produto: ");
                     String nome = scanner.nextLine();
                     System.out.print("Digite a quantidade: ");
-                    int quantidade = scanner.nextInt();
+                    int quantidade = Integer.parseInt(scanner.nextLine());
                     System.out.print("Digite o preço: ");
-                    double preco = scanner.nextDouble();
-                    scanner.nextLine();
+                    double preco = Double.parseDouble(scanner.nextLine());
                     estoque.adicionarProduto(nome, quantidade, preco);
                     break;
                 case 2:
                     System.out.print("Digite o ID do produto a ser excluído: ");
-                    int idExcluir = scanner.nextInt();
-                    scanner.nextLine();
+                    int idExcluir = Integer.parseInt(scanner.nextLine());
                     estoque.excluirProduto(idExcluir);
                     break;
                 case 3:
-                    System.out.println("Estoque atual:");
+                    System.out.println("Estoques:");
                     estoque.exibirEstoque();
                     break;
                 case 4:
                     System.out.print("Digite o ID do produto: ");
-                    int idAtualizar = scanner.nextInt();
+                    int idAtualizar = Integer.parseInt(scanner.nextLine());
                     System.out.print("Digite a nova quantidade: ");
-                    int novaQtd = scanner.nextInt();
-                    scanner.nextLine();
-                    estoque.atualizarQuantidade(idAtualizar, novaQtd);
+                    int novaQuantidade = Integer.parseInt(scanner.nextLine());
+                    estoque.atualizarQuantidade(idAtualizar, novaQuantidade);
                     break;
                 case 5:
                     System.out.println("Saindo...");

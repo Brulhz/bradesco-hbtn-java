@@ -1,5 +1,4 @@
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class Estoque {
     private void carregarEstoque() {
         produtos.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoCsv))) {
-        }            String linha;
+            String linha;
             while ((linha = br.readLine()) != null) {
                 if (linha.trim().isEmpty()) continue;
                 String[] dados = linha.split(",");
@@ -27,15 +26,14 @@ public class Estoque {
                 produtos.add(new Produto(id, nome, quantidade, preco));
             }
         } catch (FileNotFoundException e) {
-            salvarEstoque();
+            salvarEstoque(); // cria arquivo se não existir
         } catch (IOException e) {
             System.out.println("Erro ao ler o arquivo: " + e.getMessage());
         }
     }
 
     private void salvarEstoque() {
-        try (BufferedWriter bw = new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(arquivoCsv), StandardCharsets.UTF_8))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivoCsv))) {
             for (Produto p : produtos) {
                 bw.write(p.toCsv());
                 bw.newLine();
@@ -43,7 +41,6 @@ public class Estoque {
         } catch (IOException e) {
             System.out.println("Erro ao salvar o arquivo: " + e.getMessage());
         }
-
     }
 
     public void adicionarProduto(String nome, int quantidade, double preco) {
