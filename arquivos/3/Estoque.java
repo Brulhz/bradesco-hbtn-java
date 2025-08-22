@@ -55,9 +55,6 @@ public class Estoque {
         if (p != null) {
             produtos.remove(p);
             salvarEstoque();
-            System.out.println("Produto removido: " + p);
-        } else {
-            System.out.println("Produto com ID " + id + " não encontrado.");
         }
     }
 
@@ -66,17 +63,10 @@ public class Estoque {
         if (p != null) {
             p.setQuantidade(novaQuantidade);
             salvarEstoque();
-            System.out.println("Quantidade atualizada: " + p);
-        } else {
-            System.out.println("Produto com ID " + id + " não encontrado.");
         }
     }
 
     public void exibirEstoque() {
-        if (produtos.isEmpty()) {
-            System.out.println("Estoque vazio.");
-            return;
-        }
         for (Produto p : produtos) {
             System.out.println(p);
         }
