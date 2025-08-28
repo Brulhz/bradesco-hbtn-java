@@ -20,6 +20,7 @@ public class PessoasArray {
         this.nomes = nomes;
     }
 
+    // Busca linear O(n)
     public void buscaLinear(String nome) {
         System.out.println("Procurando pelo nome: \"" + nome + "\"");
         boolean encontrado = false;
@@ -32,8 +33,7 @@ public class PessoasArray {
             }
         }
 
-        if (!encontrado) {
+        if (!encontrado)
             throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
-        }
     }
 }
