@@ -9,9 +9,4 @@ public class Jornal extends Midia {
     public int getQuantidadeArtigos() {
         return quantidadeArtigos;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + String.format(" - Quantidade de Artigos: %d", quantidadeArtigos);
-    }
 }

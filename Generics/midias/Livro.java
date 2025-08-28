@@ -9,9 +9,4 @@ public class Livro extends Midia {
     public int getEdicao() {
         return edicao;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + String.format(" - Edicao: %d", edicao);
-    }
 }

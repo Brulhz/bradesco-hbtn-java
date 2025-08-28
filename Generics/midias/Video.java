@@ -9,9 +9,4 @@ public class Video extends Midia {
     public int getDuracao() {
         return duracao;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + String.format(" - Duracao: %d minutos", duracao);
-    }
 }
