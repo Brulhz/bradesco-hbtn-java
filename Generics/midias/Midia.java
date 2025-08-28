@@ -11,6 +11,6 @@ public class Midia {
 
     @Override
     public String toString() {
-        return String.format("Tipo: %s - Nome: %s", this.getClass().getName(), getNome());
+        return String.format("Tipo: %s - Nome: %s", this.getClass().getSimpleName(), getNome());
     }
 }
