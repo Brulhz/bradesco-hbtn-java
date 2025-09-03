@@ -13,6 +13,6 @@ public class Comida {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "[%s] %.6f R$ %.6f", nome, calorias, preco);
+        return String.format(new Locale("pt", "BR"), "[%s] %.6f R$ %.6f", nome, calorias, preco);
     }
 }

@@ -11,6 +11,6 @@ public class Eletronico {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "[%s] R$ %.6f", descricao, valor);
+        return String.format(new Locale("pt", "BR"), "[%s] R$ %.6f", descricao, valor);
     }
 }
