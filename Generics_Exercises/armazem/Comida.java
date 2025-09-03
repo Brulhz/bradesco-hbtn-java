@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Comida {
     private String nome;
     private double calorias;
@@ -9,20 +11,8 @@ public class Comida {
         this.preco = preco;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public double getCalorias() {
-        return calorias;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
     @Override
     public String toString() {
-        return String.format("[%s] %.0f R$ %.2f", nome, calorias, preco);
+        return String.format(Locale.US, "[%s] %.6f R$ %.6f", nome, calorias, preco);
     }
 }

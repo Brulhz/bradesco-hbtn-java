@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Eletronico {
     private String descricao;
     private double valor;
@@ -7,16 +9,8 @@ public class Eletronico {
         this.valor = valor;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
     @Override
     public String toString() {
-        return String.format("[%s] R$ %.2f", descricao, valor);
+        return String.format(Locale.US, "[%s] R$ %.6f", descricao, valor);
     }
 }
