@@ -1,3 +1,4 @@
+import java.util.*;
 import java.util.Locale;
 
 public class Program {
@@ -11,14 +12,14 @@ public class Program {
         Eletronico eletronico1 = new Eletronico("Smart TV LED 32 HD LG", 1452.55);
         Eletronico eletronico2 = new Eletronico("Nintendo Switch", 2990);
 
-        Armazem<Eletronico> armazem1 = new Armazem<>();
+        ArmazemDeEletronico armazem1 = new ArmazemDeEletronico();
         armazem1.adicionarAoInventario("TV LG", eletronico1);
         armazem1.adicionarAoInventario("Switch", eletronico2);
 
         Eletronico eletronicoBuscado1 = armazem1.obterDoInventario("Switch");
         System.out.println(eletronicoBuscado1);
 
-        Armazem<Comida> armazem2 = new Armazem<>();
+        ArmazemDeComida armazem2 = new ArmazemDeComida();
         armazem2.adicionarAoInventario("feijao", comida2);
         armazem2.adicionarAoInventario("pacoca", comida3);
 
