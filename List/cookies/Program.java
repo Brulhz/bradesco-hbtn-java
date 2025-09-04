@@ -1,32 +1,62 @@
 public class Program {
     public static void main(String[] args) {
-        Pedido pedido = new Pedido();
+        ListaTodo todo = new ListaTodo();
 
-        pedido.adicionarPedidoCookie(new PedidoCookie("Chocolate", 10));
-        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 3));
-        pedido.adicionarPedidoCookie(new PedidoCookie("Baunilha", 2));
+        todo.adicionarTarefa(new Tarefa("Ler conteúdo aula Lambda", 1));
+        todo.adicionarTarefa(new Tarefa("Aprender Design Patterns", 2));
+        todo.adicionarTarefa(new Tarefa("Limpar o quarto", 3));
 
-        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
+        todo.marcarTarefaFeita(1);
 
-        pedido.adicionarPedidoCookie(new PedidoCookie("Chocolate", 1));
-        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 1));
+        todo.listarTarefas();
 
-        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
+        System.out.println("----");
 
-        int quantidadeRemovidos = pedido.removerSabor("Nutella");
-        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
+        todo.marcarTarefaFeita(2);
+        todo.desfazerTarefa(1);
 
-        quantidadeRemovidos = pedido.removerSabor("Chocolate");
-        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
+        todo.listarTarefas();
 
-        quantidadeRemovidos = pedido.removerSabor("Baunilha");
-        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
+        System.out.println("----");
 
-        quantidadeRemovidos = pedido.removerSabor("Chocolate");
-        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
+        try {
+            todo.marcarTarefaFeita(2);
+            todo.listarTarefas();
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("----");
 
-        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 5));
-        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
+        todo.fazerTodas();
+        todo.listarTarefas();
+        System.out.println("----");
 
+        todo.desfazerTodas();
+        todo.listarTarefas();
+        System.out.println("----");
+
+        boolean resultado = todo.marcarTarefaFeita(4);
+        System.out.println(resultado);
+        System.out.println("----");
+
+        resultado = todo.desfazerTarefa(5);
+        System.out.println(resultado);
+        System.out.println("----");
+
+        try {
+            todo.adicionarTarefa(new Tarefa("Lavar roupas", 2));
+            todo.listarTarefas();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("----");
+
+        try {
+            todo.adicionarTarefa(new Tarefa("", 4));
+            todo.listarTarefas();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("----");
     }
 }
