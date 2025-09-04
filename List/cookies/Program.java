@@ -1,37 +1,31 @@
-import java.util.*;
-
 public class Program {
     public static void main(String[] args) {
-        List<Integer> numeros = new ArrayList<Integer>();
+        Pedido pedido = new Pedido();
 
-        ManipularArrayNumeros.adicionarNumero(numeros, 1);
-        ManipularArrayNumeros.adicionarNumero(numeros, 3);
-        ManipularArrayNumeros.adicionarNumero(numeros, 6);
-        ManipularArrayNumeros.adicionarNumero(numeros, 9);
+        pedido.adicionarPedidoCookie(new PedidoCookie("Chocolate", 10));
+        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 3));
+        pedido.adicionarPedidoCookie(new PedidoCookie("Baunilha", 2));
 
-        System.out.println(numeros); // Saída: [1, 3, 6, 9]
+        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
 
-        try {
-            ManipularArrayNumeros.adicionarNumero(numeros, 9);
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage()); // Saída: Numero jah contido na lista
-        }
+        pedido.adicionarPedidoCookie(new PedidoCookie("Chocolate", 1));
+        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 1));
 
-        ManipularArrayNumeros.removerNumero(numeros, 3);
-        ManipularArrayNumeros.removerNumero(numeros, 9);
+        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
 
-        System.out.println(numeros); // Saída: [1, 6]
+        int quantidadeRemovidos = pedido.removerSabor("Nutella");
+        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
 
-        try {
-            ManipularArrayNumeros.removerNumero(numeros, 9);
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage()); // Saída: Numero nao encontrado na lista
-        }
+        quantidadeRemovidos = pedido.removerSabor("Chocolate");
+        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
 
-        ManipularArrayNumeros.substituirNumero(numeros, 3, 5);
-        System.out.println(numeros); // Saída: [1, 6, 5]
+        quantidadeRemovidos = pedido.removerSabor("Baunilha");
+        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
 
-        ManipularArrayNumeros.substituirNumero(numeros, 5, 3);
-        System.out.println(numeros); // Saída: [1, 6, 3]
+        quantidadeRemovidos = pedido.removerSabor("Chocolate");
+        System.out.println(String.format("Total: %d - Removidos: %d", pedido.obterTotalCaixas(), quantidadeRemovidos));
+
+        pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 5));
+        System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
     }
 }
