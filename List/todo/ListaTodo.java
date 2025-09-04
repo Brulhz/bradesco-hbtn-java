@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ListaTodo {
     private List<Tarefa> tarefas;
@@ -9,18 +8,19 @@ public class ListaTodo {
     }
 
     public void adicionarTarefa(Tarefa tarefa) {
-        for (Tarefa t : tarefas) {
-            if (t.getIdentificador() == tarefa.getIdentificador()) {
+        for(Tarefa t : tarefas) {
+            if(t.getIdentificador() == tarefa.getIdentificador()) {
                 throw new IllegalArgumentException(
-                        "Tarefa com identificador " + tarefa.getIdentificador() + " ja existente na lista");
+                        "Tarefa com identificador " + tarefa.getIdentificador() + " ja existente na lista"
+                );
             }
         }
         tarefas.add(tarefa);
     }
 
     public boolean marcarTarefaFeita(int identificador) {
-        for (Tarefa t : tarefas) {
-            if (t.getIdentificador() == identificador) {
+        for(Tarefa t : tarefas) {
+            if(t.getIdentificador() == identificador) {
                 t.marcarFeita();
                 return true;
             }
@@ -29,9 +29,9 @@ public class ListaTodo {
     }
 
     public boolean desfazerTarefa(int identificador) {
-        for (Tarefa t : tarefas) {
-            if (t.getIdentificador() == identificador) {
-                t.desfazer();
+        for(Tarefa t : tarefas) {
+            if(t.getIdentificador() == identificador) {
+                t.marcarNaoFeita();
                 return true;
             }
         }
@@ -39,19 +39,19 @@ public class ListaTodo {
     }
 
     public void desfazerTodas() {
-        for (Tarefa t : tarefas) {
-            t.desfazer();
+        for(Tarefa t : tarefas) {
+            t.marcarNaoFeita();
         }
     }
 
     public void fazerTodas() {
-        for (Tarefa t : tarefas) {
+        for(Tarefa t : tarefas) {
             t.marcarFeita();
         }
     }
 
     public void listarTarefas() {
-        for (Tarefa t : tarefas) {
+        for(Tarefa t : tarefas) {
             System.out.println(t);
         }
     }

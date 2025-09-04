@@ -4,7 +4,7 @@ public class Tarefa {
     private int identificador;
 
     public Tarefa(String descricao, int identificador) {
-        if (descricao == null || descricao.trim().isEmpty()) {
+        if(descricao == null || descricao.trim().isEmpty()) {
             throw new IllegalArgumentException("Descricao de tarefa invalida");
         }
         this.descricao = descricao;
@@ -25,7 +25,7 @@ public class Tarefa {
     }
 
     public void modificarDescricao(String novaDescricao) {
-        if (novaDescricao == null || novaDescricao.trim().isEmpty()) {
+        if(novaDescricao == null || novaDescricao.trim().isEmpty()) {
             throw new IllegalArgumentException("Descricao de tarefa invalida");
         }
         this.descricao = novaDescricao;
@@ -35,7 +35,7 @@ public class Tarefa {
         this.estahFeita = true;
     }
 
-    public void desfazer() {
+    public void marcarNaoFeita() {
         this.estahFeita = false;
     }
 

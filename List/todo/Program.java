@@ -2,21 +2,17 @@ public class Program {
     public static void main(String[] args) {
         ListaTodo todo = new ListaTodo();
 
-        todo.adicionarTarefa(new Tarefa("Ler conteúdo aula Lambda", 1));
+        todo.adicionarTarefa(new Tarefa("Ler conteudo aula Lambda", 1));
         todo.adicionarTarefa(new Tarefa("Aprender Design Patterns", 2));
         todo.adicionarTarefa(new Tarefa("Limpar o quarto", 3));
 
         todo.marcarTarefaFeita(1);
-
         todo.listarTarefas();
-
         System.out.println("----");
 
         todo.marcarTarefaFeita(2);
         todo.desfazerTarefa(1);
-
         todo.listarTarefas();
-
         System.out.println("----");
 
         try {
