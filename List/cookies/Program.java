@@ -27,5 +27,6 @@ public class Program {
 
         pedido.adicionarPedidoCookie(new PedidoCookie("Nutella", 5));
         System.out.println(String.format("Total: %d", pedido.obterTotalCaixas()));
+
     }
 }
