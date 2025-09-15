@@ -1,4 +1,5 @@
-public class Produto {
+
+class Produto {
     private int codigo;
     private String nome;
     private CategoriaProduto categoria;
@@ -11,24 +12,15 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public CategoriaProduto getCategoria() {
-        return categoria;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
+    public int getCodigo() { return codigo; }
+    public String getNome() { return nome; }
+    public CategoriaProduto getCategoria() { return categoria; }
+    public double getPreco() { return preco; }
 
     @Override
     public String toString() {
-        return String.format("[%d] %s %s R$ %.2f", codigo, nome, categoria, preco);
+        // Formata números usando Locale brasileiro (vírgula decimal)
+        return String.format(new Locale("pt", "BR"), "[%d] %s %s R$ %.2f",
+                codigo, nome, categoria, preco);
     }
 }

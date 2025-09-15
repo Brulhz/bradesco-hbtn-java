@@ -1,6 +1,5 @@
-import java.util.List;
 
-public class Pedido {
+class Pedido {
     private int codigo;
     private List<Produto> produtos;
     private Cliente cliente;
@@ -11,15 +10,7 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
+    public int getCodigo() { return codigo; }
+    public List<Produto> getProdutos() { return produtos; }
+    public Cliente getCliente() { return cliente; }
 }

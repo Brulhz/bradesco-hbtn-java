@@ -1,4 +1,4 @@
-public enum CategoriaProduto {
+enum CategoriaProduto {
     BRINQUEDO,
     LIVRO,
     ELETRONICO;
