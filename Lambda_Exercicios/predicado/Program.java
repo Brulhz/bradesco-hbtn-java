@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.function.*;
+import java.lang.reflect.Method;
 import java.util.Locale;
 
 public class Program {
@@ -24,26 +26,34 @@ public class Program {
                 produto1, produto2, produto3, produto4, produto5
         );
 
+        // Filtros usando Predicate<Produto>
         List<Produto> produtosPrecoMaiorQue100 = ConsultaProdutos.filtrar(
-                produtos,
-                p -> p.getPreco() > 100
+                produtos, p -> p.getPreco() > 100
         );
 
         List<Produto> produtosPesoMenorOuIgual1600 = ConsultaProdutos.filtrar(
-                produtos,
-                p -> p.getPeso() <= 1600
+                produtos, p -> p.getPeso() <= 1600
         );
 
         List<Produto> produtosCozinha = ConsultaProdutos.filtrar(
-                produtos,
-                p -> p.getTipo() == TiposProduto.COZINHA
+                produtos, p -> p.getTipo() == TiposProduto.COZINHA
         );
 
         List<Produto> produtosBaixoEstoque = ConsultaProdutos.filtrar(
-                produtos,
-                p -> p.getQuantidadeEmEstoque() <= 10
+                produtos, p -> p.getQuantidadeEmEstoque() <= 10
         );
 
+        // Verifica se o método filtrar existe com Predicate
+        try {
+            Method method = ConsultaProdutos.class.getMethod("filtrar", List.class, Predicate.class);
+            if (method != null) {
+                System.out.println("Metodo encontrado");
+            }
+        } catch(NoSuchMethodException ex) {
+            System.out.println("Metodo nao encontrado");
+        }
+
+        // Mostra os resultados
         System.out.println(produtosPrecoMaiorQue100);
         System.out.println(produtosPesoMenorOuIgual1600);
         System.out.println(produtosCozinha);
