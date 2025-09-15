@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class Program {
@@ -26,5 +27,77 @@ public class Program {
         System.out.println(produtosLivro1);
         System.out.println(produtosLivro2);
         System.out.println(produtosLivro3);
+    }
+}
+
+enum CategoriaProduto {
+    BRINQUEDO,
+    LIVRO,
+    ELETRONICO;
+}
+
+class Produto {
+    private int codigo;
+    private String nome;
+    private CategoriaProduto categoria;
+    private double preco;
+
+    public Produto(int codigo, String nome, CategoriaProduto categoria, double preco) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.preco = preco;
+    }
+
+    public int getCodigo() { return codigo; }
+    public String getNome() { return nome; }
+    public CategoriaProduto getCategoria() { return categoria; }
+    public double getPreco() { return preco; }
+
+    @Override
+    public String toString() {
+        // Formata números com Locale brasileiro
+        return String.format(new Locale("pt", "BR"), "[%d] %s %s R$ %.2f",
+                codigo, nome, categoria, preco);
+    }
+}
+
+class Cliente {
+    private int codigo;
+    private String nome;
+    private boolean premium;
+
+    public Cliente(int codigo, String nome, boolean premium) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.premium = premium;
+    }
+
+    public int getCodigo() { return codigo; }
+    public String getNome() { return nome; }
+    public boolean isPremium() { return premium; }
+}
+
+class Pedido {
+    private int codigo;
+    private List<Produto> produtos;
+    private Cliente cliente;
+
+    public Pedido(int codigo, List<Produto> produtos, Cliente cliente) {
+        this.codigo = codigo;
+        this.produtos = produtos;
+        this.cliente = cliente;
+    }
+
+    public int getCodigo() { return codigo; }
+    public List<Produto> getProdutos() { return produtos; }
+    public Cliente getCliente() { return cliente; }
+}
+
+class Consulta {
+    public static List<Produto> obterLivrosDoPedido(Pedido pedido) {
+        return pedido.getProdutos().stream()
+                .filter(p -> p.getCategoria() == CategoriaProduto.LIVRO)
+                .collect(Collectors.toList());
     }
 }
