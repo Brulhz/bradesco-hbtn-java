@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -35,6 +37,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return nome + " " + preco + " " + peso + " " + quantidadeEmEstoque + " " + tipo;
+        // força Locale pt-BR e 6 casas decimais com vírgula
+        return String.format(new Locale("pt", "BR"), "%s %.6f %.6f %d %s",
+                nome, preco, peso, quantidadeEmEstoque, tipo);
     }
 }
