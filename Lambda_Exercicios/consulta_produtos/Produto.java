@@ -35,7 +35,6 @@ public class Produto {
 
     @Override
     public String toString() {
-        // sem formatação -> usa padrão do double (6 casas decimais)
         return nome + " " + preco + " " + peso + " " + quantidadeEmEstoque + " " + tipo;
     }
 }
