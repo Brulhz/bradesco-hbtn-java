@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Locale;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Program {
@@ -18,15 +19,15 @@ public class Program {
 
         Pedido pedido1 = new Pedido(1, List.of(produto4, produto3, produto6), cliente1);
         Pedido pedido2 = new Pedido(2, List.of(produto1, produto6, produto2), cliente2);
-        Pedido pedido3 = new Pedido(3, List.of(produto4, produto6, produto2, produto5), cliente3);
+        Pedido pedido3 = new Pedido(3, List.of(produto4, produto6, produto5), cliente3);
 
-        List<Produto> produtosLivro1 = Consulta.obterLivrosDoPedido(pedido1);
-        List<Produto> produtosLivro2 = Consulta.obterLivrosDoPedido(pedido2);
-        List<Produto> produtosLivro3 = Consulta.obterLivrosDoPedido(pedido3);
+        Produto produtoMaior1 = Consulta.obterProdutoMaiorPreco(pedido1.getProdutos());
+        Produto produtoMaior2 = Consulta.obterProdutoMaiorPreco(pedido2.getProdutos());
+        Produto produtoMaior3 = Consulta.obterProdutoMaiorPreco(pedido3.getProdutos());
 
-        System.out.println(produtosLivro1);
-        System.out.println(produtosLivro2);
-        System.out.println(produtosLivro3);
+        System.out.println(produtoMaior1);
+        System.out.println(produtoMaior2);
+        System.out.println(produtoMaior3);
     }
 }
 
@@ -94,9 +95,16 @@ class Pedido {
 }
 
 class Consulta {
+
     public static List<Produto> obterLivrosDoPedido(Pedido pedido) {
         return pedido.getProdutos().stream()
                 .filter(p -> p.getCategoria() == CategoriaProduto.LIVRO)
                 .collect(Collectors.toList());
+    }
+
+    public static Produto obterProdutoMaiorPreco(List<Produto> produtos) {
+        return produtos.stream()
+                .max(Comparator.comparing(Produto::getPreco))
+                .orElse(null); // retorna null se a lista estiver vazia
     }
 }
