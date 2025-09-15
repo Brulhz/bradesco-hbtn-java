@@ -26,7 +26,6 @@ public class Program {
                 produto1, produto2, produto3, produto4, produto5
         );
 
-        // Filtros usando Predicate<Produto>
         List<Produto> produtosPrecoMaiorQue100 = ConsultaProdutos.filtrar(
                 produtos, p -> p.getPreco() > 100
         );
@@ -43,7 +42,6 @@ public class Program {
                 produtos, p -> p.getQuantidadeEmEstoque() <= 10
         );
 
-        // Verifica se o método filtrar existe com Predicate
         try {
             Method method = ConsultaProdutos.class.getMethod("filtrar", List.class, Predicate.class);
             if (method != null) {
@@ -53,7 +51,6 @@ public class Program {
             System.out.println("Metodo nao encontrado");
         }
 
-        // Mostra os resultados
         System.out.println(produtosPrecoMaiorQue100);
         System.out.println(produtosPesoMenorOuIgual1600);
         System.out.println(produtosCozinha);
