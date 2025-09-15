@@ -19,7 +19,6 @@ class Produto {
 
     @Override
     public String toString() {
-        // Formata números usando Locale brasileiro (vírgula decimal)
         return String.format(new Locale("pt", "BR"), "[%d] %s %s R$ %.2f",
                 codigo, nome, categoria, preco);
     }
