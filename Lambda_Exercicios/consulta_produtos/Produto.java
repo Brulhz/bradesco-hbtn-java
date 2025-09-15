@@ -35,8 +35,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        // formatando para 2 casas decimais
-        return String.format("%s %.2f %.2f %d %s",
-                nome, preco, peso, quantidadeEmEstoque, tipo);
+        // sem formatação -> usa padrão do double (6 casas decimais)
+        return nome + " " + preco + " " + peso + " " + quantidadeEmEstoque + " " + tipo;
     }
 }
