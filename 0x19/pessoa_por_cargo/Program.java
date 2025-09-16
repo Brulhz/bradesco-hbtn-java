@@ -13,10 +13,8 @@ public class Program {
         Pessoa pessoa9 = new Pessoa(9, "Andrei Melendez", "Analista QA", 42, 5330);
         Pessoa pessoa10 = new Pessoa(10, "Branden Irwin", "Analista QA", 21, 2800);
 
-        List<Pessoa> todasPessoas = List.of(
-                pessoa1, pessoa2, pessoa3, pessoa4, pessoa5,
-                pessoa6, pessoa7, pessoa8, pessoa9, pessoa10
-        );
+        List<Pessoa> todasPessoas = List.of(pessoa1, pessoa2, pessoa3, pessoa4, pessoa5,
+                pessoa6, pessoa7, pessoa8, pessoa9, pessoa10);
 
         Map<String, List<Pessoa>> pessoasPorCargo1 = ConsultaPessoas.obterPessoasPorCargo(todasPessoas);
         Map<String, List<Pessoa>> pessoasPorCargo2 = ConsultaPessoas.obterPessoasPorCargo(
