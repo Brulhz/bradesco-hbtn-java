@@ -1,5 +1,4 @@
-
-class Cliente {
+public class Cliente {
     private int codigo;
     private String nome;
     private boolean premium;
@@ -10,7 +9,15 @@ class Cliente {
         this.premium = premium;
     }
 
-    public int getCodigo() { return codigo; }
-    public String getNome() { return nome; }
-    public boolean isPremium() { return premium; }
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
 }

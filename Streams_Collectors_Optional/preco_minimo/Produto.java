@@ -1,5 +1,6 @@
+import java.util.Locale;
 
-class Produto {
+public class Produto {
     private int codigo;
     private String nome;
     private CategoriaProduto categoria;
@@ -12,14 +13,25 @@ class Produto {
         this.preco = preco;
     }
 
-    public int getCodigo() { return codigo; }
-    public String getNome() { return nome; }
-    public CategoriaProduto getCategoria() { return categoria; }
-    public double getPreco() { return preco; }
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public CategoriaProduto getCategoria() {
+        return categoria;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
 
     @Override
     public String toString() {
-        return String.format(new Locale("pt", "BR"), "[%d] %s %s R$ %.2f",
-                codigo, nome, categoria, preco);
+        return String.format(new Locale("pt", "BR"),
+                "[%d] %s %s R$ %.2f", codigo, nome, categoria, preco);
     }
 }
