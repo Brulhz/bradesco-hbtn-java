@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Pessoa {
     private int codigo;
     private String nome;
@@ -21,4 +23,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return String.format("[%]()
+        // Formata salário com ponto decimal e depois troca por vírgula para padrão brasileiro
+        return String.format("[%d] %s %s %d R$ %.6f",
+                        codigo, nome, cargo, idade, salario)
+                .replace('.', ',');
+    }
+}
