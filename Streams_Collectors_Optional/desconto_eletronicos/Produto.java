@@ -29,9 +29,15 @@ public class Produto {
         return preco;
     }
 
+    
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
     @Override
     public String toString() {
         return String.format(new Locale("pt", "BR"),
-                "[%d] %s %s R$ %.2f", codigo, nome, categoria, preco);
+                "[%d] %s %s R$ %.2f",
+                codigo, nome, categoria, preco);
     }
 }
