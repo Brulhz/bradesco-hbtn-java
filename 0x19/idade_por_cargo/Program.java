@@ -16,18 +16,11 @@ public class Program {
         List<Pessoa> todasPessoas = List.of(pessoa1, pessoa2, pessoa3, pessoa4, pessoa5,
                 pessoa6, pessoa7, pessoa8, pessoa9, pessoa10);
 
-        Map<String, List<Pessoa>> pessoasPorCargo1 = ConsultaPessoas.obterPessoasPorCargo(todasPessoas);
-        Map<String, List<Pessoa>> pessoasPorCargo2 = ConsultaPessoas.obterPessoasPorCargo(
-                List.of(pessoa1, pessoa4, pessoa10)
-        );
-        Map<String, List<Pessoa>> pessoasPorCargo3 = ConsultaPessoas.obterPessoasPorCargo(
-                List.of(pessoa4, pessoa9)
-        );
+        Map<String, List<Pessoa>> pessoasPorCargo = ConsultaPessoas.obterPessoasPorCargo(todasPessoas);
+        System.out.println(pessoasPorCargo);
+        System.out.println();
 
-        System.out.println(pessoasPorCargo1);
-        System.out.println();
-        System.out.println(pessoasPorCargo2);
-        System.out.println();
-        System.out.println(pessoasPorCargo3);
+        Map<String, List<Integer>> idadesPorCargo = ConsultaPessoas.obterIdadePorCargo(todasPessoas);
+        System.out.println(idadesPorCargo);
     }
 }
