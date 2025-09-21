@@ -24,6 +24,10 @@ public class Pessoa implements Comparable<Pessoa> {
         return idade;
     }
 
+    public double getSalario() {
+        return salario;
+    }
+
     @Override
     public String toString() {
         Locale brasil = new Locale("pt", "BR");
