@@ -1,5 +1,4 @@
-import java.util.Locale;
-import java.util.Objects;
+import java.util.*;
 
 public class Pessoa implements Comparable<Pessoa> {
     private int codigo;
@@ -7,13 +6,15 @@ public class Pessoa implements Comparable<Pessoa> {
     private String cargo;
     private int idade;
     private double salario;
+    private List<String> hobbies;
 
-    public Pessoa(int codigo, String nome, String cargo, int idade, double salario) {
+    public Pessoa(int codigo, String nome, String cargo, int idade, double salario, List<String> hobbies) {
         this.codigo = codigo;
         this.nome = nome;
         this.cargo = cargo;
         this.idade = idade;
         this.salario = salario;
+        this.hobbies = hobbies;
     }
 
     public String getCargo() {
@@ -28,10 +29,13 @@ public class Pessoa implements Comparable<Pessoa> {
         return salario;
     }
 
+    public List<String> getHobbies() {
+        return hobbies;
+    }
+
     @Override
     public String toString() {
-        Locale brasil = new Locale("pt", "BR");
-        return String.format(brasil, "[%d] %s %s %d R$ %.6f", codigo, nome, cargo, idade, salario);
+        return String.format("[%d] %s %s %d R$ %.6f", codigo, nome, cargo, idade, salario);
     }
 
     @Override
